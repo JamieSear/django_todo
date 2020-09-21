@@ -1,14 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <title>To do List</title>
 </head>
 <body>
 
     <h1>To do</h1>
-
+    
+    <p id="create_task">Create a new task:</p>
     <form method="POST" action="/">
         {% csrf_token %}
         {{form.title}}
@@ -16,14 +19,14 @@
     </form>
 
 {% for task in tasks %}
-    <div>
-        <a href="{% url 'update_task' task.id %}">Update</a>
-        <a href="{% url 'delete' task.id %}">Delete</a>
+    <div id="list_section">
+        <a class="update" href="{% url 'update_task' task.id %}">Update</a>
+        <a class="delete" href="{% url 'delete' task.id %}">Delete</a>
 
         {% if task.complete == True %}
-        <strike>{{task}}</strike>
+        <strike class="list_text">{{task}}</strike>
         {% else %}
-        <span>{{task}}</span>
+        <span class="list_text">{{task}}</span>
         {% endif %}
     </div>
 
