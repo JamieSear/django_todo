@@ -110,8 +110,10 @@ input::placeholder{
 }
 
 input#id_complete{
-    padding:70px
-
+        width: 38px;
+        border-radius: 11px;
+        padding: 40px;
+        font-size: 30px;
 }
 
 label{
